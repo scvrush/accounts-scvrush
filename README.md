@@ -1,1 +1,1 @@
-# Meteor authentication package for SCV Rush
+## SCV Rush authentication smart package for [meteor](http://meteor.com)
