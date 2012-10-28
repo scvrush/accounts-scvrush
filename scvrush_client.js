@@ -6,8 +6,8 @@
   Template.scvrushLogin.events = {
     "submit form": function(event) {
       event.preventDefault();
-      var login    = $(event.target).find("[name=login").val(),
-          password = $(event.target).find("[name=password").val();
+      var login    = $(event.target).find("[name=login]").val(),
+          password = $(event.target).find("[name=password]").val();
 
       Meteor.call("authenticate", login, password, _authenticated)
     }
