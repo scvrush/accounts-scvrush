@@ -1,8 +1,8 @@
-Template.configureLoginServiceDialogForGithub.siteUrl = function () {
+Template.configureLoginServiceDialogForScvrush.siteUrl = function () {
   return Meteor.absoluteUrl();
 };
 
-Template.configureLoginServiceDialogForGithub.fields = function () {
+Template.configureLoginServiceDialogForScvrush.fields = function () {
   return [
     {property: 'clientId', label: 'Client ID'},
     {property: 'secret', label: 'Client Secret'}

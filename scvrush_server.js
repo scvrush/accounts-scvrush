@@ -1,5 +1,5 @@
 (function () {
-  Accounts.oauth.registerService('github', 2, function(query) {
+  Accounts.oauth.registerService('scvrush', 2, function(query) {
 
     var accessToken = getAccessToken(query);
     var identity = getIdentity(accessToken);
@@ -8,24 +8,24 @@
       serviceData: {
         id: identity.id,
         accessToken: accessToken,
-	email: identity.email,
-	username: identity.login
+	      email: identity.email,
+	      username: identity.login
       },
       options: {profile: {name: identity.name}}
     };
   });
 
   var getAccessToken = function (query) {
-    var config = Accounts.loginServiceConfiguration.findOne({service: 'github'});
+    var config = Accounts.loginServiceConfiguration.findOne({service: 'scvrush'});
     if (!config)
       throw new Accounts.ConfigError("Service not configured");
 
     var result = Meteor.http.post(
-      "https://github.com/login/oauth/access_token", {headers: {Accept: 'application/json'}, params: {
+      "https://scvrush.dev/oauth/access_token", {headers: {Accept: 'application/json'}, params: {
 	code: query.code,
 	client_id: config.clientId,
 	client_secret: config.secret,
-	redirect_uri: Meteor.absoluteUrl("_oauth/github?close"),
+	redirect_uri: Meteor.absoluteUrl("_oauth/scvrush?close"),
 	state: query.state
       }});
     if (result.error) // if the http response was an error
@@ -37,7 +37,7 @@
 
   var getIdentity = function (accessToken) {
     var result = Meteor.http.get(
-      "https://api.github.com/user",
+      "https://api.scvrush.com/user",
       {params: {access_token: accessToken}});
     if (result.error)
       throw result.error;

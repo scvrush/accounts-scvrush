@@ -1,3 +1,3 @@
-if (!Accounts.github) {
-  Accounts.github = {};
+if (!Accounts.scvrush) {
+  Accounts.scvrush = {};
 }
